@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bare Leather — Email Campaign Calendar | May 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Georgia', serif; background: #faf8f5; color: #2c2c2c; }
+
+  header {
+    background: #2c2118;
+    color: #f5ede0;
+    padding: 40px 48px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  header h1 { font-size: 1.8rem; font-weight: normal; letter-spacing: 0.05em; }
+  header p { font-size: 0.85rem; opacity: 0.65; margin-top: 6px; font-family: sans-serif; }
+  header .meta { text-align: right; font-family: sans-serif; font-size: 0.8rem; opacity: 0.65; }
+
+  .container { max-width: 1400px; margin: 0 auto; padding: 40px 32px; }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+    padding: 20px 24px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e8e0d5;
+  }
+  .legend h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #888; font-family: sans-serif; margin-bottom: 10px; width: 100%; }
+  .badge { display: inline-flex; align-items: center; gap: 8px; font-family: sans-serif; font-size: 0.78rem; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+  /* Status colours */
+  .status-sent     { background: #3d7a5e; }
+  .status-draft    { background: #b8996a; }
+  .status-review   { background: #5b7fa6; }
+  .status-scheduled{ background: #6a5b9a; }
+  .status-idea     { background: #aaa; }
+  .status-cancelled{ background: #c0392b; }
+
+  /* Table */
+  .table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid #e8e0d5; }
+  table { width: 100%; border-collapse: collapse; background: #fff; font-size: 0.82rem; }
+  thead th {
+    background: #2c2118;
+    color: #f5ede0;
+    text-align: left;
+    padding: 14px 16px;
+    font-family: sans-serif;
+    font-weight: 500;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  tbody tr { border-bottom: 1px solid #f0ebe3; transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #fdf9f5; }
+  tbody td { padding: 16px; vertical-align: top; line-height: 1.55; }
+
+  .date-cell { white-space: nowrap; font-family: sans-serif; font-weight: 600; font-size: 0.8rem; color: #2c2118; }
+  .concept { font-weight: bold; color: #2c2118; margin-bottom: 3px; }
+  .category-tag {
+    display: inline-block;
+    font-family: sans-serif;
+    font-size: 0.68rem;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: #f0ebe3;
+    color: #6b5c48;
+    margin-top: 4px;
+    white-space: nowrap;
+  }
+  .focus { color: #555; font-size: 0.79rem; }
+  .subject-line { font-weight: 600; color: #2c2118; }
+  .preview-text { color: #777; font-size: 0.77rem; margin-top: 3px; font-style: italic; }
+  .heading-text { font-style: italic; color: #5a3e2b; }
+  .cta-btn {
+    display: inline-block;
+    background: #2c2118;
+    color: #f5ede0;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-family: sans-serif;
+    font-size: 0.72rem;
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+  }
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: sans-serif;
+    font-size: 0.72rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+  .pill-sent      { background: #e8f5ef; color: #2d6b4f; }
+  .pill-draft     { background: #fdf3e3; color: #7a5c2e; }
+  .pill-review    { background: #e8f0f8; color: #3a5f82; }
+  .pill-scheduled { background: #eeebf7; color: #4a3a7a; }
+
+  /* Backlog */
+  .section-title {
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    color: #2c2118;
+    margin: 48px 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e8e0d5;
+    font-family: sans-serif;
+    font-weight: 600;
+  }
+
+  .backlog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .backlog-card {
+    background: #fff;
+    border: 1px solid #e8e0d5;
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .backlog-card h4 { font-size: 0.88rem; color: #2c2118; margin-bottom: 6px; }
+  .backlog-card p { font-size: 0.78rem; color: #777; font-family: sans-serif; line-height: 1.5; }
+  .priority { font-family: sans-serif; font-size: 0.68rem; font-weight: 600; margin-top: 10px; display: inline-block; padding: 2px 8px; border-radius: 20px; background: #fdf3e3; color: #7a5c2e; }
+
+  /* Notes */
+  .notes-box {
+    background: #fff;
+    border: 1px solid #e8e0d5;
+    border-radius: 8px;
+    padding: 24px;
+    font-family: sans-serif;
+    font-size: 0.82rem;
+    line-height: 1.8;
+    color: #555;
+  }
+  .notes-box li { margin-left: 18px; }
+
+  footer {
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 0.72rem;
+    color: #bbb;
+    padding: 40px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Bare Leather</h1>
+    <p>Email Campaign Calendar — May 2026</p>
+  </div>
+  <div class="meta">
+    Last updated: 7 May 2026<br>
+    Owner: [Your Name]
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Legend -->
+  <div class="legend">
+    <h3>Status Key</h3>
+    <span class="badge"><span class="dot status-sent"></span> Sent</span>
+    <span class="badge"><span class="dot status-draft"></span> Draft</span>
+    <span class="badge"><span class="dot status-review"></span> In Review</span>
+    <span class="badge"><span class="dot status-scheduled"></span> Scheduled</span>
+    <span class="badge"><span class="dot status-idea"></span> Idea</span>
+    <span class="badge"><span class="dot status-cancelled"></span> Cancelled</span>
+  </div>
+
+  <!-- Campaign Table -->
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Concept / Theme</th>
+          <th>Category</th>
+          <th>Content Focus</th>
+          <th>Subject + Preview</th>
+          <th>Main Heading</th>
+          <th>CTA</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td class="date-cell">Tue<br>5 May</td>
+          <td><div class="concept">Meet Chocolate</div></td>
+          <td><span class="category-tag">Product Launch</span></td>
+          <td class="focus">Introduce the new chocolate colourway as a timeless neutral that pairs effortlessly with everyday wardrobes. Focus on versatility, richness of tone, and why it feels elevated without being trend-driven. Soft launch through lifestyle storytelling.</td>
+          <td><div class="subject-line">Our new colour has arrived</div><div class="preview-text">Meet chocolate: rich, timeless, and made for everyday wear.</div></td>
+          <td class="heading-text">The Colour You'll Reach For Daily</td>
+          <td><span class="cta-btn">Shop Chocolate</span></td>
+          <td><span class="status-pill pill-sent">✓ Sent</span></td>
+        </tr>
+
+        <tr>
+          <td class="date-cell">Fri<br>8 May</td>
+          <td><div class="concept">The Gift Box Edit</div></td>
+          <td><span class="category-tag">Promotional</span></td>
+          <td class="focus">Position the gift box as thoughtful value rather than a discount-driven offer. Highlight the pairing of the Fifi and Minnie Purse and how they simplify gifting or upgrading your own essentials in one purchase.</td>
+          <td><div class="subject-line">Two favourites, one exclusive set</div><div class="preview-text">The chocolate gift box pairs everyday function with effortless style.</div></td>
+          <td class="heading-text">A Set Worth Keeping Together</td>
+          <td><span class="cta-btn">Shop The Gift Box</span></td>
+          <td><span class="status-pill pill-sent">✓ Sent</span></td>
+        </tr>
+
+        <tr>
+          <td class="date-cell">Tue<br>12 May</td>
+          <td><div class="concept">What Fits Inside the Fifi</div></td>
+          <td><span class="category-tag">Education / Product</span></td>
+          <td class="focus">Show how the Fifi works for real life. Focus on functionality, compartments, comfort, and how it transitions from errands to dinners. Builds practical trust for mid-funnel shoppers.</td>
+          <td><div class="subject-line">Will it fit your day?</div><div class="preview-text">A closer look inside our most wearable everyday bag.</div></td>
+          <td class="heading-text">Designed For Real Life</td>
+          <td><span class="cta-btn">Explore The Fifi</span></td>
+          <td><span class="status-pill pill-draft">✏ Draft</span></td>
+        </tr>
+
+        <tr>
+          <td class="date-cell">Fri<br>15 May</td>
+          <td><div class="concept">Why Women Are Choosing Smaller Collections</div></td>
+          <td><span class="category-tag">Brand Philosophy</span></td>
+          <td class="focus">Speak to intentional shopping habits and buying fewer, better accessories. Tie this mindset back to quality leather pieces that work across years, not seasons. Subtly reinforces value positioning.</td>
+          <td><div class="subject-line">Buying less, choosing better</div><div class="preview-text">The shift toward timeless pieces women actually use every day.</div></td>
+          <td class="heading-text">Fewer Pieces. More Wear.</td>
+          <td><span class="cta-btn">Discover Everyday Staples</span></td>
+          <td><span class="status-pill pill-draft">✏ Draft</span></td>
+        </tr>
+
+        <tr>
+          <td class="date-cell">Tue<br>19 May</td>
+          <td><div class="concept">The Minnie Purse Spotlight</div></td>
+          <td><span class="category-tag">Product Spotlight</span></td>
+          <td class="focus">Position the Minnie Purse as the practical luxury women carry every day. Focus on organisation, ease, and how a beautiful wallet changes everyday routines more than expected.</td>
+          <td><div class="subject-line">The purse that keeps up</div><div class="preview-text">Small details make the biggest difference in your daily routine.</div></td>
+          <td class="heading-text">Your Everyday Essential</td>
+          <td><span class="cta-btn">Shop Minnie</span></td>
+          <td><span class="status-pill pill-draft">✏ Draft</span></td>
+        </tr>
+
+        <tr>
+          <td class="date-cell">Fri<br>22 May</td>
+          <td><div class="concept">Customer Favourites This Month</div></td>
+          <td><span class="category-tag">Social Proof</span></td>
+          <td class="focus">Curate reviews, customer photos, and repeat-purchase insights around bestselling styles. Help hesitant shoppers see themselves in the brand through relatable customer experiences.</td>
+          <td><div class="subject-line">What women are loving lately</div><div class="preview-text">These Bare Leather favourites keep selling out for a reason.</div></td>
+          <td class="heading-text">Bestsellers Women Actually Use</td>
+          <td><span class="cta-btn">See Customer Favourites</span></td>
+          <td><span class="status-pill pill-draft">✏ Draft</span></td>
+        </tr>
+
+        <tr>
+          <td class="date-cell">Tue<br>26 May</td>
+          <td><div class="concept">How To Style Chocolate</div></td>
+          <td><span class="category-tag">Styling &amp; Lifestyle</span></td>
+          <td class="focus">Position chocolate as the easiest neutral for autumn wardrobes. Pair with denim, black, creams, and workwear. Educational styling content increases confidence around trying a new colour.</td>
+          <td><div class="subject-line">Chocolate goes with more than you think</div><div class="preview-text">Three easy ways to style this season's richest neutral.</div></td>
+          <td class="heading-text">The Neutral That Elevates Everything</td>
+          <td><span class="cta-btn">Style Your Look</span></td>
+          <td><span class="status-pill pill-draft">✏ Draft</span></td>
+        </tr>
+
+        <tr>
+          <td class="date-cell">Fri<br>29 May</td>
+          <td><div class="concept">A First Look At What's Next</div></td>
+          <td><span class="category-tag">Teaser / Soft Launch</span></td>
+          <td class="focus">Begin teasing the upcoming Jorja wallet in chocolate without fully launching it. Build anticipation through waitlist-style curiosity and "coming soon" energy. Keep it understated and premium.</td>
+          <td><div class="subject-line">Something new is coming</div><div class="preview-text">A familiar favourite is about to arrive in chocolate.</div></td>
+          <td class="heading-text">Your Favourite Wallet, Reimagined</td>
+          <td><span class="cta-btn">Join The Waitlist</span></td>
+          <td><span class="status-pill pill-draft">✏ Draft</span></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Backlog -->
+  <div class="section-title">💡 Email Ideas Backlog</div>
+  <div class="backlog-grid">
+    <div class="backlog-card">
+      <h4>Jorja Wallet Full Launch — Chocolate</h4>
+      <p>Follow up to the 29 May teaser once stock is live. Full product reveal and purchase push.</p>
+      <span class="priority">High Priority</span>
+    </div>
+    <div class="backlog-card">
+      <h4>[Email Idea]</h4>
+      <p>[Add notes or inspiration here]</p>
+      <span class="priority">Med Priority</span>
+    </div>
+    <div class="backlog-card">
+      <h4>[Email Idea]</h4>
+      <p>[Add notes or inspiration here]</p>
+      <span class="priority">Low Priority</span>
+    </div>
+  </div>
+
+  <!-- Notes -->
+  <div class="section-title">📝 General Notes</div>
+  <div class="notes-box">
+    <ul>
+      <li>Sending cadence: <strong>Tuesday + Friday</strong> each week throughout May</li>
+      <li>The <strong>chocolate colourway</strong> is the hero product for May — all emails should connect back to it where relevant</li>
+      <li>The <strong>Jorja wallet teaser</strong> (29 May) sets up the June launch — keep tone premium and understated</li>
+      <li>[Add team review or approval guidelines here]</li>
+      <li>[Add any sending rules, e.g. max emails per week per segment]</li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>Bare Leather · Email Campaign Calendar · May 2026</footer>
+
+</body>
+</html>
